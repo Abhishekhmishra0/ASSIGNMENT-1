@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int main(){
+    int playerscore =0;
+    int computerscore=0;
+    int userchoice;
+    srand(time(0)); // seed for random function generator
+    for(int round =1; round<=3; round++){
+        printf(" Round %d: Enter your choice (0 for rock; 1 for paper; and 2 for scissor): ",round);
+        scanf("%d",&userchoice);
+        int computerchoice = rand()%3;
+       
+        if(userchoice <0 || userchoice>2) {printf("Invalid choice please enter 1 or 2 or 3\n");
+        round--;
+            continue;
+        }
+         printf("computer chose %d\n",computerchoice);
+        
+        if((userchoice==0 && computerchoice==2) || (userchoice==1 && computerchoice==0) || (userchoice==2 && computerchoice ==1)
+        ) {
+            printf("You won this round\n");
+            playerscore++;
+        }
+         else if(userchoice==computerchoice){printf("This round is a tie\n");}
+        
+        else {
+            printf("Computer Won this round\n");
+        
+        computerscore++;
+        }
+    }
+    if(playerscore>computerscore)printf("You won by %d rounds\n",playerscore-computerscore);
+    else if(playerscore==computerscore){printf("Game tied\n");}
+    else{
+        printf("Computer won by %d rounds\n", computerscore-playerscore);
+    }
+    printf("Game Over Hope you enjoyed it");
+    return 0;
+}
+
+
